@@ -1,0 +1,73 @@
+<div class="results-header">
+  <h2>Blended: {{productBlended.name}}</h2>
+  <h3>
+    Investment Cost = {{productBlended.investmentCost | currency}}
+  </h3>
+</div>
+
+<div class="results-intro">
+  <div class="results-container">
+    <div class="results-text-box">
+      Now that the unit total for each month has been determined, the profit and return on investment(ROI) can be calculated for each month. In order for a product to be considered profitable it should have at least a 20% ROI in the final month of the first year.
+    </div>
+    <div class="results-text-box">
+      Profit per month
+    </div>
+    <div class="results-text-box">
+      <div class="results-profit-display">
+        <div class="results-profit-boxes"  ng-repeat="(month, value) in productBlended.resultsFirstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="results-profit-display" >
+        <div class="results-profit-boxes" ng-repeat="(month, value) in productBlended.resultsFirstYear">
+          ${{ value }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="results-goals">
+  <div class="results-container">
+    <div class="results-text-box">
+      ROI per month
+    </div>
+    <div class="results-text-box">
+      <div class="results-roi-display">
+        <div class="results-roi-boxes"  ng-repeat="(month, value) in productBlended.roiFirstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="results-roi-display" >
+        <div class="results-roi-boxes" ng-repeat="(month, value) in productBlended.roiFirstYear">
+          {{ value}}%
+        </div>
+      </div>
+    </div>
+    <div class="results-text-box">
+      With your current profit of {{productBlended.profit | currency}} on each unit you will break even once you sell {{productBlended.breakEvenQty}}.
+    </div>
+    <div class="results-text-box">
+      To achieve 20% profit on your investment at your current profit margin you will need to sell {{productBlended.twentyProfitQty}}
+    </div>
+    <div class="results-text-box">
+      With your current projected units sold in the first year of {{productBlended.unitsTotal}} your mark up should be {{productBlended.goalMarkUp}} making your price {{productBlended.goalPrice | currency}} per unit, and a profit of {{productBlended.goalProfitPerUnit | currency}} per unit, to achieve 20% profit .
+    </div>
+  </div>
+</div>
+
+<div class="results-button-container">
+  <div class="previous-button" ui-sref="worstCaseResults">
+      Previous: Worst Case Results
+  </div>
+
+  <div class="save-button" ng-click="create(product)">
+      Save this Product
+  </div>
+
+  <div class="next-button" ng-click="create(product); loadingPage()">
+      Save and Exit
+  </div>
+
+</div>

@@ -1,0 +1,98 @@
+<div class="initial-cost-header">
+  <h2>Most Likely Case: {{productMostLikely.name}}</h2>
+</div>
+
+<div class="initial-investment">
+  <div class="initial-container">
+    <div class="initial-text-box">
+      What will be your costs to develop and market the product? This will be everthing that is spent on the product before it begins selling
+       and is considered the amount you are investing into the product.
+    </div>
+    <div class="initial-text-box">
+      Research:   <input type="text" ng-model="productMostLikely.research" value="" ng-blur="totalFuncMostLikely(); resultsFirstYearFuncMostLikely(); roiFirstYearFuncMostLikely()">
+    </div>
+    <div class="initial-text-box">
+      Development:   <input type="text" ng-model="productMostLikely.development" value="" ng-blur="totalFuncMostLikely(); resultsFirstYearFuncMostLikely(); roiFirstYearFuncMostLikely()">
+    </div>
+
+    <div class="initial-text-box">
+      Marketing:   <input type="text" ng-model="productMostLikely.marketing" value="" ng-blur="totalFuncMostLikely(); resultsFirstYearFuncMostLikely(); roiFirstYearFuncMostLikely()">
+    </div>
+    <div class="initial-text-box">
+      Other Costs:   <input type="text" ng-model="productMostLikely.other" value="" ng-blur="totalFuncMostLikely(); resultsFirstYearFuncMostLikely(); roiFirstYearFuncMostLikely()">
+    </div>
+    <div class="input-text-box">
+      Total Investment Cost = {{productMostLikely.investmentCost | currency}}
+    </div>
+  </div>
+</div>
+
+<div class="initial-cogs">
+  <div class="initial-container">
+    <div class="initial-text-box">
+      What are you're estimated costs to produce a single item?
+    </div>
+    <div class="initial-text-box">
+      Materials:   <input type="text" ng-model="productMostLikely.material" value="" ng-blur="cogsFuncMostLikely(); resultsFirstYearFuncMostLikely(); roiFirstYearFuncMostLikely()">
+    </div>
+    <div class="initial-text-box">
+      Production Costs:   <input type="text" ng-model="productMostLikely.production" value="" ng-blur="cogsFuncMostLikely(); sellPriceMostLikely(); resultsFirstYearFuncMostLikely(); roiFirstYearFuncMostLikely()">
+    </div>
+    <div class="initial-text-box">
+      Cost of Goods = {{productMostLikely.cogs | currency}}
+    </div>
+    <div class="initial-text-box">
+      What will be your mark up?    <input type="text" ng-model="productMostLikely.markUp" value="" ng-blur="sellPriceMostLikely(); resultsFirstYearFuncMostLikely(); roiFirstYearFuncMostLikely()">
+    </div>
+    <div class="initial-text-box">
+      Final sale price = {{productMostLikely.price | currency}} and Profit per unit = {{productMostLikely.profit | currency}}
+    </div>
+  </div>
+</div>
+
+<div class="initial-units">
+  <div class="initial-container">
+    <div class="initial-text-box">
+      How many units will you sell in the first year:   <input type="text" ng-model="productMostLikely.unitsYear" value="" ng-blur="unitsMonthFuncMostLikely(); resultsFirstYearFuncMostLikely(); roiFirstYearFuncMostLikely()">
+    </div>
+    <div class="initial-text-box">
+      Assuming that it will take time to build product awarness and sales, each monthly unit total first has a percentage applied to it. Starting percentage is low but increments up to 100% over the first year. It is not recommended to change the starting percentage.
+    </div>
+    <div class="initial-text-box">
+      <div class="initial-units-display">
+        <div class="initial-units-boxes"  ng-repeat="(month, value) in productMostLikely.firstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="initial-units-display" >
+        <div class="initial-units-boxes" ng-repeat="(month, value) in productMostLikely.firstYear">
+          {{ value}}
+        </div>
+      </div>
+    </div>
+
+
+      <div class="initial-text-box">
+        Starting Percentage<input type="text" ng-model="productMostLikely.startingPercentage" value="" ng-blur="unitsMonthFuncMostLikely()">
+      </div>
+      <div class="initial-text-box">
+        Total units sold in the first year is projected to be {{productMostLikely.unitsTotal}}
+      </div>
+
+  </div>
+</div>
+
+<div class="button-container">
+  <div class="previous-button" ui-sref="bestCaseResults">
+      Previous: Best Case Results
+  </div>
+
+  <div class="save-button" ng-click="create(product)">
+    Save this Product
+  </div>
+
+  <div class="next-button" ui-sref="mostLikelyCaseResults" ng-click="blendedFunc()">
+      Next: Results
+  </div>
+
+</div>

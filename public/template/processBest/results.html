@@ -1,0 +1,77 @@
+<div class="results-header">
+  <h2>Best Case: {{product.name}}</h2>
+  <h3>
+    Investment Cost = {{product.investmentCost | currency}}
+  </h3>
+</div>
+
+<div class="results-intro">
+  <div class="results-container">
+    <div class="results-text-box">
+      Now that the unit total for each month has been determined, the profit and return on investment(ROI) can be calculated for each month. In order for a product to be considered profitable it should have at least a 20% ROI in the final month of the first year.
+    </div>
+    <div class="results-text-box">
+      Profit per month
+    </div>
+    <div class="results-text-box">
+      <div class="results-profit-display">
+        <div class="results-profit-boxes"  ng-repeat="(month, value) in product.resultsFirstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="results-profit-display" >
+        <div class="results-profit-boxes" ng-repeat="(month, value) in product.resultsFirstYear">
+          ${{ value }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="results-goals">
+  <div class="results-container">
+    <div class="results-text-box">
+      ROI per month
+    </div>
+    <div class="results-text-box">
+      <div class="results-roi-display">
+        <div class="results-roi-boxes"  ng-repeat="(month, value) in product.roiFirstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="results-roi-display" >
+        <div class="results-roi-boxes" ng-repeat="(month, value) in product.roiFirstYear">
+          {{ value}}%
+        </div>
+      </div>
+    </div>
+    <div class="results-text-box">
+      With your current profit of {{product.profit | currency}} on each unit you will break even once you sell {{product.breakEvenQty}}.
+    </div>
+    <div class="results-text-box">
+      To achieve 20% profit on your investment at your current profit margin you will need to sell {{product.twentyProfitQty}}
+    </div>
+    <div class="results-text-box">
+      With your current projected units sold in the first year of {{product.unitsTotal}} your mark up should be {{product.goalMarkUp}} making your price {{product.goalPrice | currency}} per unit, and a profit of {{product.goalProfitPerUnit | currency}} per unit, to achieve 20% profit .
+    </div>
+  </div>
+</div>
+
+<div class="results-button-container">
+  <div class="previous-button" ui-sref="bestCaseInitialCost">
+      Previous: Initial Costs
+  </div>
+
+  <div class="save-button" ng-click="create(product)">
+      Save this Product
+  </div>
+
+  <div class="next-button" ui-sref="mostLikelyCaseInitialCost" ng-click="mostLikelyFunc()">
+      Auto-Populate Most Likely Case
+  </div>
+
+  <div class="next-button" ui-sref="mostLikelyCaseInitialCost">
+      Next: Most Likely Case
+  </div>
+
+</div>

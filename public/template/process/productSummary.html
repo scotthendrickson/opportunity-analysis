@@ -1,0 +1,432 @@
+<div class="case-button-container">
+  <div class="best-button" ng-click="bestButtonFunc()" ng-model="bestButton">
+    Best Case
+  </div>
+  <div class="mostLikely-button"  ng-click="mostLikelyButtonFunc()" ng-model="mostLikelyButton">
+    Most Likely Case
+  </div>
+  <div class="worst-button"  ng-click="worstButtonFunc()" ng-model="worstButton">
+    Worst Case
+  </div>
+  <div class="blended-button"  ng-click="blendedButtonFunc()" ng-model="blendedButton">
+    Blended Case
+  </div>
+</div>
+
+<div class="summary-header">
+  <h2>{{product.name}}</h2>
+  <div class="summary-container">
+    <div class="summary-text-box">
+      Description:   {{product.description}}
+    </div>
+    <div class="summary-text-box">
+      Opportunity:   {{product.opportunity}}
+    </div>
+  </div>
+</div>
+
+<div class="summary-best-case" ng-hide="bestButton">
+  <div class="summary-container">
+    <div class="summary-text-box">
+      Material Cost:   {{product.material}}
+    </div>
+    <div class="summary-text-box">
+      Production Cost:   {{product.production}}
+    </div>
+    <div class="summary-text-box">
+      Cost of Goods:   {{product.cogs}}
+    </div>
+    <div class="summary-text-box">
+      Mark Up:   {{product.markUp}}
+    </div>
+    <div class="summary-text-box">
+      Sell Price:   {{product.price}}
+    </div>
+    <div class="summary-text-box">
+      Profit Per unit:   {{product.profit}}
+    </div>
+    <div class="summary-text-box">
+      Research:   {{product.research}}
+    </div>
+    <div class="summary-text-box">
+      Development:   {{product.development}}
+    </div>
+    <div class="summary-text-box">
+      Marketing:   {{product.marketing}}
+    </div>
+    <div class="summary-text-box">
+      Other Costs:   {{product.otherinvestmentcost}}
+    </div>
+  </div>
+  <div class="summary-container">
+    <div class="summary-text-box">
+      Estimated units sold in the first year:   {{product.unitsTotal}}
+    </div>
+    <div class="initial-text-box">
+      Estimated units sold per month:
+      <div class="summary-units-display">
+        <div class="summary-units-boxes"  ng-repeat="(month, value) in product.firstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="summary-units-display" >
+        <div class="summary-units-boxes" ng-repeat="(month, value) in product.firstYear">
+          {{ value}}
+        </div>
+      </div>
+    </div>
+    <div class="summary-text-box">
+      Profit per month
+    </div>
+    <div class="summary-text-box">
+      <div class="summary-profit-display">
+        <div class="summary-profit-boxes"  ng-repeat="(month, value) in product.resultsFirstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="summary-profit-display" >
+        <div class="summary-profit-boxes" ng-repeat="(month, value) in product.resultsFirstYear">
+          ${{ value }}
+        </div>
+      </div>
+    </div>
+    <div class="summary-text-box">
+      ROI per month
+    </div>
+    <div class="summary-text-box">
+      <div class="summary-roi-display">
+        <div class="summary-roi-boxes"  ng-repeat="(month, value) in product.roiFirstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="summary-roi-display" >
+        <div class="summary-roi-boxes" ng-repeat="(month, value) in product.roiFirstYear">
+          {{ value}}%
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="summary-container">
+    <div class="summary-text-box">
+      Break even quantity:   {{product.breakEvenQty}}
+    </div>
+    <div class="summary-text-box">
+      Quantity needed to reach 20% profit:   {{product.twentyProfitQty}}
+    </div>
+    <div class="summary-text-box">
+      Target profit per unit:   {{product.goalProfitPerUnit}}
+    </div>
+    <div class="summary-text-box">
+      Target price per unit:   {{product.goalPrice}}
+    </div>
+  </div>
+</div>
+
+<div class="summary-mostLikely-case"  ng-hide="mostLikelyButton">
+  <div class="summary-container">
+    <div class="summary-text-box">
+      Material Cost:   {{productMostLikely.material}}
+    </div>
+    <div class="summary-text-box">
+      Production Cost:   {{productMostLikely.production}}
+    </div>
+    <div class="summary-text-box">
+      Cost of Goods:   {{productMostLikely.cogs}}
+    </div>
+    <div class="summary-text-box">
+      Mark Up:   {{productMostLikely.markUp}}
+    </div>
+    <div class="summary-text-box">
+      Sell Price:   {{productMostLikely.price}}
+    </div>
+    <div class="summary-text-box">
+      Profit Per unit:   {{productMostLikely.profit}}
+    </div>
+    <div class="summary-text-box">
+      Research:   {{productMostLikely.research}}
+    </div>
+    <div class="summary-text-box">
+      Development:   {{productMostLikely.development}}
+    </div>
+    <div class="summary-text-box">
+      Marketing:   {{productMostLikely.marketing}}
+    </div>
+    <div class="summary-text-box">
+      Other Costs:   {{productMostLikely.otherinvestmentcost}}
+    </div>
+  </div>
+  <div class="summary-container">
+    <div class="summary-text-box">
+      Estimated units sold in the first year:   {{productMostLikely.unitsTotal}}
+    </div>
+    <div class="initial-text-box">
+      Estimated units sold per month:
+      <div class="summary-units-display">
+        <div class="summary-units-boxes"  ng-repeat="(month, value) in productMostLikely.firstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="summary-units-display" >
+        <div class="summary-units-boxes" ng-repeat="(month, value) in productMostLikely.firstYear">
+          {{ value}}
+        </div>
+      </div>
+    </div>
+    <div class="summary-text-box">
+      Profit per month
+    </div>
+    <div class="summary-text-box">
+      <div class="summary-profit-display">
+        <div class="summary-profit-boxes"  ng-repeat="(month, value) in productMostLikely.resultsFirstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="summary-profit-display" >
+        <div class="summary-profit-boxes" ng-repeat="(month, value) in productMostLikely.resultsFirstYear">
+          ${{ value }}
+        </div>
+      </div>
+    </div>
+    <div class="summary-text-box">
+      ROI per month
+    </div>
+    <div class="summary-text-box">
+      <div class="summary-roi-display">
+        <div class="summary-roi-boxes"  ng-repeat="(month, value) in productMostLikely.roiFirstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="summary-roi-display" >
+        <div class="summary-roi-boxes" ng-repeat="(month, value) in productMostLikely.roiFirstYear">
+          {{ value}}%
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="summary-container">
+    <div class="summary-text-box">
+      Break even quantity:   {{productMostLikely.breakEvenQty}}
+    </div>
+    <div class="summary-text-box">
+      Quantity needed to reach 20% profit:   {{productMostLikely.twentyProfitQty}}
+    </div>
+    <div class="summary-text-box">
+      Target profit per unit:   {{productMostLikely.goalProfitPerUnit}}
+    </div>
+    <div class="summary-text-box">
+      Target price per unit:   {{productMostLikely.goalPrice}}
+    </div>
+  </div>
+</div>
+
+<div class="summary-worst-case" ng-hide="worstButton">
+  <div class="summary-container">
+    <div class="summary-text-box">
+      Material Cost:   {{productWorst.material}}
+    </div>
+    <div class="summary-text-box">
+      Production Cost:   {{productWorst.production}}
+    </div>
+    <div class="summary-text-box">
+      Cost of Goods:   {{productWorst.cogs}}
+    </div>
+    <div class="summary-text-box">
+      Mark Up:   {{productWorst.markUp}}
+    </div>
+    <div class="summary-text-box">
+      Sell Price:   {{productWorst.price}}
+    </div>
+    <div class="summary-text-box">
+      Profit Per unit:   {{productWorst.profit}}
+    </div>
+    <div class="summary-text-box">
+      Research:   {{productWorst.research}}
+    </div>
+    <div class="summary-text-box">
+      Development:   {{productWorst.development}}
+    </div>
+    <div class="summary-text-box">
+      Marketing:   {{productWorst.marketing}}
+    </div>
+    <div class="summary-text-box">
+      Other Costs:   {{productWorst.otherinvestmentcost}}
+    </div>
+  </div>
+  <div class="summary-container">
+    <div class="summary-text-box">
+      Estimated units sold in the first year:   {{productWorst.unitsTotal}}
+    </div>
+    <div class="initial-text-box">
+      Estimated units sold per month:
+      <div class="summary-units-display">
+        <div class="summary-units-boxes"  ng-repeat="(month, value) in productWorst.firstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="summary-units-display" >
+        <div class="summary-units-boxes" ng-repeat="(month, value) in productWorst.firstYear">
+          {{ value}}
+        </div>
+      </div>
+    </div>
+    <div class="summary-text-box">
+      Profit per month
+    </div>
+    <div class="summary-text-box">
+      <div class="summary-profit-display">
+        <div class="summary-profit-boxes"  ng-repeat="(month, value) in productWorst.resultsFirstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="summary-profit-display" >
+        <div class="summary-profit-boxes" ng-repeat="(month, value) in productWorst.resultsFirstYear">
+          ${{ value }}
+        </div>
+      </div>
+    </div>
+    <div class="summary-text-box">
+      ROI per month
+    </div>
+    <div class="summary-text-box">
+      <div class="summary-roi-display">
+        <div class="summary-roi-boxes"  ng-repeat="(month, value) in productWorst.roiFirstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="summary-roi-display" >
+        <div class="summary-roi-boxes" ng-repeat="(month, value) in productWorst.roiFirstYear">
+          {{ value}}%
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="summary-container">
+    <div class="summary-text-box">
+      Break even quantity:   {{productWorst.breakEvenQty}}
+    </div>
+    <div class="summary-text-box">
+      Quantity needed to reach 20% profit:   {{productWorst.twentyProfitQty}}
+    </div>
+    <div class="summary-text-box">
+      Target profit per unit:   {{productWorst.goalProfitPerUnit}}
+    </div>
+    <div class="summary-text-box">
+      Target price per unit:   {{productWorst.goalPrice}}
+    </div>
+  </div>
+</div>
+
+<div class="summary-blended-case" ng-hide="blendedButton">
+  <div class="summary-container">
+    <div class="summary-text-box">
+      Material Cost:   {{productBlended.material}}
+    </div>
+    <div class="summary-text-box">
+      Production Cost:   {{productBlended.production}}
+    </div>
+    <div class="summary-text-box">
+      Cost of Goods:   {{productBlended.cogs}}
+    </div>
+    <div class="summary-text-box">
+      Mark Up:   {{productBlended.markUp}}
+    </div>
+    <div class="summary-text-box">
+      Sell Price:   {{productBlended.price}}
+    </div>
+    <div class="summary-text-box">
+      Profit Per unit:   {{productBlended.profit}}
+    </div>
+    <div class="summary-text-box">
+      Research:   {{productBlended.research}}
+    </div>
+    <div class="summary-text-box">
+      Development:   {{productBlended.development}}
+    </div>
+    <div class="summary-text-box">
+      Marketing:   {{productBlended.marketing}}
+    </div>
+    <div class="summary-text-box">
+      Other Costs:   {{productBlended.otherinvestmentcost}}
+    </div>
+  </div>
+  <div class="summary-container">
+    <div class="summary-text-box">
+      Estimated units sold in the first year:   {{productBlended.unitsTotal}}
+    </div>
+    <div class="initial-text-box">
+      Estimated units sold per month:
+      <div class="summary-units-display">
+        <div class="summary-units-boxes"  ng-repeat="(month, value) in productBlended.firstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="summary-units-display" >
+        <div class="summary-units-boxes" ng-repeat="(month, value) in productBlended.firstYear">
+          {{ value}}
+        </div>
+      </div>
+    </div>
+    <div class="summary-text-box">
+      Profit per month
+    </div>
+    <div class="summary-text-box">
+      <div class="summary-profit-display">
+        <div class="summary-profit-boxes"  ng-repeat="(month, value) in productBlended.resultsFirstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="summary-profit-display" >
+        <div class="summary-profit-boxes" ng-repeat="(month, value) in productBlended.resultsFirstYear">
+          ${{ value }}
+        </div>
+      </div>
+    </div>
+    <div class="summary-text-box">
+      ROI per month
+    </div>
+    <div class="summary-text-box">
+      <div class="summary-roi-display">
+        <div class="summary-roi-boxes"  ng-repeat="(month, value) in productBlended.roiFirstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="summary-roi-display" >
+        <div class="summary-roi-boxes" ng-repeat="(month, value) in productBlended.roiFirstYear">
+          {{ value}}%
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="summary-container">
+    <div class="summary-text-box">
+      Break even quantity:   {{productBlended.breakEvenQty}}
+    </div>
+    <div class="summary-text-box">
+      Quantity needed to reach 20% profit:   {{productBlended.twentyProfitQty}}
+    </div>
+    <div class="summary-text-box">
+      Target profit per unit:   {{productBlended.goalProfitPerUnit}}
+    </div>
+    <div class="summary-text-box">
+      Target price per unit:   {{productBlended.goalPrice}}
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="summary-button-container">
+  <div class="save-button"  ng-click="destroy(product._id); loadingPage()">
+    Delete this Product
+  </div>
+
+  <div class="next-button" ui-sref="analysis" ng-click="ultraFunc()">
+    Quick edit this Product
+  </div>
+
+  <div class="next-button" ui-sref="bestCaseAnalysis" ng-click="ultraFunc()">
+    In-Depth edit this Product
+  </div>
+
+</div>

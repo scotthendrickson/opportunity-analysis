@@ -1,0 +1,371 @@
+module.exports = {
+  allProducts : [],
+  getProducts : function(){
+    Product.find().exec(function(err, res) {
+      if(err){
+        console.log("failed to find all the marbles")
+        return res.status(500).json(err);
+      }else{
+        allProducts = res;
+        console.log("I've got all the marbles!", allProducts);
+        return res.status(200).json(res);
+      }
+    });
+  },
+
+  createProduct : function(obj, res){
+    Product.create(obj, function(err, res){
+    if(err){
+      console.log("failed to create")
+      return res.status(500).json(err);
+    }else{
+      console.log("I have created LIFE")
+      return res.status(200).json(res)
+    }
+  })
+},
+
+  singleSearchProduct : {},
+  findIndividual : function(id){
+    Product.findById(id, function(err, res){
+      if(err){
+        console.log("Failed to discover your identity")
+        res.status(500).json(err);
+      }else {
+        singleSearchProduct = res;
+        console.log("Successfully discovered your identity!", singleSearchProduct)
+        res.json(response);
+      }
+    })
+  },
+
+  updateProduct : function(id, update){
+    Product.findByIdAndUpdate(id, update, function(err, res){
+      if(err){
+        console.log("Failed to update")
+        res.status(500).json(err)
+      }else {
+        console.log("Update successfull")
+        res.json(res);
+      }
+    })
+  },
+
+  removeProduct : function(id){
+    Product.findByIdAndRemove(id, function(err, res){
+      return err ? res.status(500).json(err): res.json(res);
+  })
+},
+}
+var mongoose = require('mongoose');
+Schema = mongoose.Schema;
+var schema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    index: true,
+    },
+  description: {
+    type: String,
+    required: true
+    },
+  opportunity: {
+    type: String,
+    required: true
+    },
+  material: {
+    type: Number,
+    },
+  production: {
+    type: Number,
+    },
+  cogs: {
+    type: Number,
+    },
+  markUp: {
+    type: Number,
+    },
+  price: {
+    type: Number,
+    },
+  profit: {
+    type: Number,
+    },
+  research: {
+    type: Number,
+    },
+  development: {
+    type: Number,
+    },
+  marketing: {
+    type: Number,
+    },
+  other: {
+    type: Number,
+    },
+  investmentCost : {
+    type: Number,
+    },
+  unitsYear: {
+    type: Number,
+    },
+  unitsMonth: {
+    type: Number,
+    },
+  unitsTotal: {
+    type: Number,
+    },
+  firstYear: {
+    type: {},   },
+  resultsFirstYear: {
+    type: {},
+    },
+  roiFirstYear: {
+    type: {},
+    },
+  startingPercentage: {
+    type: Number,
+    },
+  incrementPercentage: {
+    type: Number,
+    },
+  breakEvenQty: {
+    type: Number,
+    },
+  twentyProfitQty: {
+    type: Number,
+    },
+  goalProfitPerUnit: {
+    type: Number,
+    },
+});
+var Product = mongoose.model('product', schema);
+// var Product = mongoose.model('product', schema);
+//
+// var allProducts = [];
+// var getProducts = function(){
+//   Product.find().exec(function(err, res) {
+//     if(err){
+//       console.log("failed to find all the marbles")
+//     }else{
+//       allProducts = res;
+//         console.log("I've got all the marbles!", allProducts);
+//
+//     }
+//   });
+// };
+//
+// var createProduct = function(obj){
+//   Product.create(obj, function(err){
+//   if(err){
+//     console.log("failed to create")
+//   }else{
+//     console.log("I have created LIFE")
+//   }
+// })
+// };
+//
+// var singleSearchProduct;
+// var findIndividual = function(id){
+//   Product.findById(id, function(err, res){
+//     if(err){
+//       console.log("Failed to discover your identity")
+//     }else {
+//       singleSearchProduct = res;
+//       console.log("Successfully discovered your identity!", singleSearchProduct)
+//     }
+//   })
+// }
+//
+// var updateProduct = function(id, update){
+//   Product.findByIdAndUpdate(id, update, function(err){
+//     if(err){
+//       console.log("Failed to update")
+//     }else {
+//
+//       console.log("Update successfull")
+//     }
+//   })
+// };
+//
+// var removeProduct = function(id){
+//   Product.findByIdAndRemove(id, function(err){
+//   if(err){
+//     console.log("failed to delete")
+//   }else{
+//     console.log("Winner winner it's a deleter")
+//   }
+// })
+// };
+
+
+
+/*
+findIndividual("5771a4e511b4b26019556b2c");
+createProduct({
+  name: "Product 1",
+  description:"Filled with many words",
+  opportunity: "Guaranteed firework show",
+  material: 1,
+  production: 2,
+  cogs: 3,
+  markUp: 4,
+  price: 5,
+  profit: 6,
+  research: 7,
+  development:8,
+  marketing: 9,
+  other: 10,
+  investmentCost : 11,
+  unitsYear: 12,
+  unitsMonth: 13,
+  unitsTotal: 14,
+  firstYear: {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0,
+    8: 0,
+    9: 0,
+    10: 0,
+    11: 0,
+    12: 0,
+  },
+  resultsFirstYear: {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0,
+    8: 0,
+    9: 0,
+    10: 0,
+    11: 0,
+    12: 0,
+  },
+  roiFirstYear: {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0,
+    8: 0,
+    9: 0,
+    10: 0,
+    11: 0,
+    12: 0,
+  },
+  startingPercentage: 18,
+  incrementPercentage: 19,
+  breakEvenQty: 20,
+  twentyProfitQty: 21,
+  goalProfitPerUnit: 22,
+});
+
+
+updateProduct("5771a4e511b4b26019556b2c",{
+  name: "Product This will probably fail",
+  description:"Filled with many elephants",
+  opportunity: "Guaranteed movie show",
+  material: 5,
+  production: 3,
+  cogs: 1,
+  markUp: 2,
+  price: 7,
+  profit: 67,
+  research: 87,
+  development:89,
+  marketing: 59,
+  other: 130,
+  investmentCost : 411,
+  unitsYear: 152,
+  unitsMonth: 613,
+  unitsTotal: 184,
+  incrementPercentage: 199,
+  breakEvenQty: 207,
+  twentyProfitQty: 215,
+  goalProfitPerUnit: 223,
+});
+*/
+module.exports = {
+  allProducts : [],
+  getProducts : function(req, res){
+    Product.find().exec(function(err, response) {
+      allProducts = response;
+      return err ? res.status(500).json(err) : res.json(response);
+      // if(err){
+      //   console.log("failed to find all the marbles")
+      //   return res.status(500).json(err);
+      // }else{
+      //   allProducts = response;
+      //   console.log("I've got all the marbles!", allProducts);
+      //   return res.status(200).json(response);
+      // }
+    });
+  },
+
+  createProduct : function(req, res){
+    Product.create(req.body, function(err, response){
+      return err ? res.status(500).json(err) : res.json(response);
+    // if(err){
+    //   console.log("failed to create")
+    //   res.status(500).json(error);
+    // }else{
+    //   console.log("I have created LIFE")
+    //   res.status(200).json(response);
+    // }
+  })
+},
+
+  singleSearchProduct : {},
+  findIndividual : function(req, res){
+    if(!req.params.id){
+      return res.status(400).send("id required to search the database")
+    }
+    Product.findById(req.params.id, function(err, response){
+      return err ? res.status(500).json(err) : res.json(response);
+      // if(err){
+      //   console.log("Failed to discover your identity")
+      // }else {
+      //   singleSearchProduct = res;
+      //   console.log("Successfully discovered your identity!", singleSearchProduct)
+      // }
+    })
+  },
+
+  updateProduct : function(req, res){
+    if(!req.params.id){
+      return res.status(400).send("id required to update database")
+    }
+    Product.findByIdAndUpdate(req.params.id, req.body, function(err,response){
+      return err ? res.status(500).json(err) : res.json(response);
+      // if(err){
+      //   console.log("Failed to update")
+      // }else {
+      //
+      //   console.log("Update successfull")
+      // }
+    })
+  },
+
+  removeProduct : function(req, res){
+    if(!req.params.id){
+      return res.status(400).send("id required to delete an item")
+    }
+    Product.findByIdAndRemove(req.params.id, function(err, response){
+      return err ? res.status(500).json(err) : res.json(response);
+    // if(err){
+    //   console.log("failed to delete")
+    // }else{
+    //   console.log("Winner winner it's a deleter")
+    // }
+  })
+},
+}

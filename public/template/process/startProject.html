@@ -1,0 +1,32 @@
+<div class="button-container">
+  <div class="save-button" ng-click="cleanStartFunc(); loginCheck('/analysis', 'start a new analysis')">
+      Start a new Quick Project?
+  </div>
+
+  <div class="next-button" ng-click="cleanStartFunc(); loginCheck('/analysis/bestCase', 'start a new analysis')">
+      Start a new In-Depth Project?
+  </div>
+</div>
+
+<div class="start-body">
+  <h1>Previous Projects</h1>
+  <div class="project-container">
+    <div class="project-button"  ui-sref="productbyid({productId: products._id})" ng-repeat="products in allProducts">
+      <div ng-click="findIndividual(products._id); bestButtonFunc()">
+        <div>
+          Name:{{products.name}}
+        </div>
+        <br>
+        <div>
+          Description: {{products.description}}
+        </div>
+        <br>
+        <div>
+          Final Month ROI: {{products.roiFirstYear[12]}}%
+        </div>
+      </div>
+
+      <br><br>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="initial-cost-header">
+  <h2>Best Case: {{product.name}}</h2>
+</div>
+
+<div class="initial-investment">
+  <div class="initial-container">
+    <div class="initial-text-box">
+      What will be your costs to develop and market the product? This will be everthing that is spent on the product before it begins selling
+       and is considered the amount you are investing into the product.
+    </div>
+    <div class="initial-text-box">
+      Research:   <input type="text" ng-model="product.research" value="" ng-blur="totalFunc(); resultsFirstYearFunc(); roiFirstYearFunc()">
+    </div>
+    <div class="initial-text-box">
+      Development:   <input type="text" ng-model="product.development" value="" ng-blur="totalFunc(); resultsFirstYearFunc(); roiFirstYearFunc()">
+    </div>
+
+    <div class="initial-text-box">
+      Marketing:   <input type="text" ng-model="product.marketing" value="" ng-blur="totalFunc(); resultsFirstYearFunc(); roiFirstYearFunc()">
+    </div>
+    <div class="initial-text-box">
+      Other Costs:   <input type="text" ng-model="product.other" value="" ng-blur="totalFunc(); resultsFirstYearFunc(); roiFirstYearFunc()">
+    </div>
+    <div class="input-text-box">
+      Total Investment Cost = {{product.investmentCost | currency}}
+    </div>
+  </div>
+</div>
+
+<div class="initial-cogs">
+  <div class="initial-container">
+    <div class="initial-text-box">
+      What are you're estimated costs to produce a single item?
+    </div>
+    <div class="initial-text-box">
+      Materials:   <input type="text" ng-model="product.material" value="" ng-blur="cogsFunc(); resultsFirstYearFunc(); roiFirstYearFunc()">
+    </div>
+    <div class="initial-text-box">
+      Production Costs:   <input type="text" ng-model="product.production" value="" ng-blur="cogsFunc(); sellPrice(); resultsFirstYearFunc(); roiFirstYearFunc()">
+    </div>
+    <div class="initial-text-box">
+      Cost of Goods = {{product.cogs | currency}}
+    </div>
+    <div class="initial-text-box">
+      What will be your mark up?    <input type="text" ng-model="product.markUp" value="" ng-blur="sellPrice(); resultsFirstYearFunc(); roiFirstYearFunc()">
+    </div>
+    <div class="initial-text-box">
+      Final sale price = {{product.price | currency}} and Profit per unit = {{product.profit | currency}}
+    </div>
+  </div>
+</div>
+
+<div class="initial-units">
+  <div class="initial-container">
+    <div class="initial-text-box">
+      How many units will you sell in the first year:   <input type="text" ng-model="product.unitsYear" value="" ng-blur="unitsMonthFunc(); resultsFirstYearFunc(); roiFirstYearFunc()">
+    </div>
+    <div class="initial-text-box">
+      Assuming that it will take time to build product awarness and sales, each monthly unit total first has a percentage applied to it. Starting percentage is low but increments up to 100% over the first year. It is not recommended to change the starting percentage.
+    </div>
+    <div class="initial-text-box">
+      <div class="initial-units-display">
+        <div class="initial-units-boxes"  ng-repeat="(month, value) in product.firstYear">
+          {{month}}
+        </div>
+      </div>
+      <div class="initial-units-display" >
+        <div class="initial-units-boxes" ng-repeat="(month, value) in product.firstYear">
+          {{ value}}
+        </div>
+      </div>
+    </div>
+
+
+      <div class="initial-text-box">
+        Starting Percentage<input type="text" ng-model="product.startingPercentage" value="" ng-blur="unitsMonthFunc()">
+      </div>
+      <div class="initial-text-box">
+        Total units sold in the first year is projected to be {{product.unitsTotal}}
+      </div>
+
+  </div>
+</div>
+
+<div class="button-container">
+  <div class="previous-button" ui-sref="bestCaseAnalysis">
+      Previous: Product Description
+  </div>
+
+  <div class="save-button" ng-click="create(product)">
+    Save this Product
+  </div>
+
+  <div class="next-button" ui-sref="bestCaseResults" ng-click="blendedFunc()">
+      Next: Results
+  </div>
+
+</div>

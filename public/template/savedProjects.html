@@ -1,0 +1,20 @@
+<div>
+  Previous Projects
+  <div>
+    <div ng-repeat="products in allProducts">
+      <!--<div ng-click="productIdent(products._id)">-->
+      <div ng-click="findIndividual(products._id)">
+        <a ui-sref="productbyid({productId: products._id})">
+
+          <div>
+            {{products.name}}
+          </div>
+          <div>
+            {{products.description}}
+          </div>
+        </a>
+      </div>
+      <br><br>
+    </div>
+  </div>
+</div>

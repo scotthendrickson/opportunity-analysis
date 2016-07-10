@@ -1,0 +1,36 @@
+<div class="analysis-intro">
+  <h3>Opportunity Analysis</h3>
+</div>
+<div class="analysis-body">
+  <div class="input-container">
+  <div class="input-text-box">
+    What is the name of your product?
+  </div>
+  <div class="input-box">
+    <input type="text" ng-model="product.name" value="">
+  </div>
+  <div class="input-text-box">
+    Describe your product:
+  </div>
+  <div class="input-box">
+    <textarea ng-model="product.description" rows="4" cols="40"></textarea>
+  </div>
+  <div class="input-text-box">
+    What is the opportunity or target market for this product?
+  </div>
+  <div class="input-box">
+    <textarea ng-model="product.opportunity" rows="4" cols="40"></textarea>
+  </div>
+    </div>
+</div>
+
+<div class="button-container">
+  <div class="save-button" ng-click="create(product)">
+      Save this Product
+  </div>
+
+  <div class="next-button" ui-sref="initialCost">
+      Next: Investment Costs
+  </div>
+
+</div>

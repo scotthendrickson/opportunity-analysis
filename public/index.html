@@ -1,0 +1,63 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html ng-app='routerApp'>
+<head>
+
+    <!-- CSS (load bootstrap)-->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <!--RESET -->
+    <link rel="stylesheet" href="./reset.css">
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .navbar { border-radius:0; }
+    </style>
+    <title>The Opportunity Analyzer</title>
+
+</head>
+
+<!-- apply our angular app to our site -->
+<body ng-controller="mainCtrl">
+
+<!-- NAVIGATION -->
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="home">The Opportunity Analyzer by {{name}}</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ng-Click="loadingPage()">Analysis</a></li>
+        <li><a ui-sref="about">About</a></li>
+        <li><a ui-sref="login">{{user.login}} | Login</a></li>
+        <li ng-click="loginCheck('/userProfile', 'edit your profile.')"><a>Profile</a></li>
+        <li ng-click="logOut()"><a>Logout</a></li>
+        <li><span my-current-time="format"></span></li>
+    </ul>
+
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="main-container" ui-view>
+
+</div>
+<footer class="footer">
+    <nav class="navbar navbar-inverse" role="navigation">
+        <ul class="nav navbar-nav">
+          <li><a ui-sref="home">Home</a></li>
+          <li><a ng-Click="loadingPage()">Analysis</a></li>
+          <li><a ui-sref="about">About</a></li>
+        </ul>
+    </nav>
+</footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.js"></script>
+<!--<script src="/dist/all.js"></script>-->
+  <script src="/js/app.js"></script>
+  <script src="/js/mainCtrl.js"></script>
+  <script src="/js/mainService.js"></script>
+  <script src="/js/directives.js"></script>
+</body>
+</html>
