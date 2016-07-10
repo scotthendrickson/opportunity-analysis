@@ -93,7 +93,8 @@ app.get('/api/users/:id', userCtrl.findIndividual)
 app.put('/api/users/:id', userCtrl.updateUser)
 app.delete('/api/users/:id', userCtrl.removeUser)
 
-var port = 3000;
+var MONGO_URI = process.env.MONGO_URI;
+var port = process.env.PORT || 3000;
 app.listen(port, function(){
   console.log("Listening on port", port)
 })
