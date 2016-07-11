@@ -8,7 +8,7 @@ var express = require('express'),
     blendedCtrl = require('./controllers/blendedCtrl'),
     mongoose = require('mongoose');
 
-var MONGO_URI = "mongodb://bearabon:Johnstone3@ds023644.mlab.com:23644/opportunity-analysis"
+var MONGO_URI = process.env.MONGO_URI;
 
 mongoose.connect(MONGO_URI,  function (err, res) {
       if (err) {
