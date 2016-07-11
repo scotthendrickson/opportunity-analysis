@@ -4,7 +4,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'GET',
-      url: "http://localhost:3000/api/products/" + id
+      url: "/api/products/" + id
     }).then(function(response){
       deferred.resolve(response.data);
     })
@@ -14,7 +14,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'GET',
-      url: "http://localhost:3000/api/products/" + id
+      url: "/api/products/" + id
     }).then(function(response){
       deferred.resolve(response.data);
     })
@@ -24,7 +24,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'DELETE',
-      url: "http://localhost:3000/api/products/" + id
+      url: "/api/products/" + id
     }).then(function(response){
       deferred.resolve(response);
     })
@@ -34,7 +34,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'POST',
-      url: "http://localhost:3000/api/products",
+      url: "/api/products",
       data: body
     }).then(function(response){
       deferred.resolve(response.data);
@@ -45,7 +45,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'PUT',
-      url: "http://localhost:3000/api/products/" + id,
+      url: "/api/products/" + id,
       data: body
     }).then(function(response){
       deferred.resolve(response.data);
@@ -58,7 +58,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'GET',
-      url: "http://localhost:3000/api/mostLikely/" + id
+      url: "/api/mostLikely/" + id
     }).then(function(response){
       deferred.resolve(response.data);
     })
@@ -68,7 +68,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'GET',
-      url: "http://localhost:3000/api/mostLikely/" + id
+      url: "/api/mostLikely/" + id
     }).then(function(response){
       deferred.resolve(response.data);
     })
@@ -78,7 +78,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'DELETE',
-      url: "http://localhost:3000/api/mostLikely/" + id
+      url: "/api/mostLikely/" + id
     }).then(function(response){
       deferred.resolve(response);
     })
@@ -88,7 +88,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'POST',
-      url: "http://localhost:3000/api/mostLikely",
+      url: "/api/mostLikely",
       data: body
     }).then(function(response){
       deferred.resolve(response.data);
@@ -99,7 +99,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'PUT',
-      url: "http://localhost:3000/api/mostLikely/" + id,
+      url: "/api/mostLikely/" + id,
       data: body
     }).then(function(response){
       deferred.resolve(response.data);
@@ -112,7 +112,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'GET',
-      url: "http://localhost:3000/api/worst/" + id
+      url: "/api/worst/" + id
     }).then(function(response){
       deferred.resolve(response.data);
     })
@@ -122,7 +122,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'GET',
-      url: "http://localhost:3000/api/worst/" + id
+      url: "/api/worst/" + id
     }).then(function(response){
       deferred.resolve(response.data);
     })
@@ -132,7 +132,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'DELETE',
-      url: "http://localhost:3000/api/worst/" + id
+      url: "/api/worst/" + id
     }).then(function(response){
       deferred.resolve(response);
     })
@@ -142,7 +142,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'POST',
-      url: "http://localhost:3000/api/worst",
+      url: "/api/worst",
       data: body
     }).then(function(response){
       deferred.resolve(response.data);
@@ -153,7 +153,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'PUT',
-      url: "http://localhost:3000/api/worst/" + id,
+      url: "/api/worst/" + id,
       data: body
     }).then(function(response){
       deferred.resolve(response.data);
@@ -165,7 +165,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'GET',
-      url: "http://localhost:3000/api/blended/" + id
+      url: "/api/blended/" + id
     }).then(function(response){
       deferred.resolve(response.data);
     })
@@ -175,7 +175,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'GET',
-      url: "http://localhost:3000/api/blended/" + id
+      url: "/api/blended/" + id
     }).then(function(response){
       deferred.resolve(response.data);
     })
@@ -185,7 +185,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'DELETE',
-      url: "http://localhost:3000/api/blended/" + id
+      url: "/api/blended/" + id
     }).then(function(response){
       deferred.resolve(response);
     })
@@ -195,7 +195,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'POST',
-      url: "http://localhost:3000/api/blended",
+      url: "/api/blended",
       data: body
     }).then(function(response){
       deferred.resolve(response.data);
@@ -206,7 +206,7 @@ angular.module('routerApp').service('mainService', function($http, $q){
     var deferred = $q.defer();
     $http({
       method: 'PUT',
-      url: "http://localhost:3000/api/blended/" + id,
+      url: "/api/blended/" + id,
       data: body
     }).then(function(response){
       deferred.resolve(response.data);
@@ -221,7 +221,7 @@ this.findUser = function(id){
   var deferred = $q.defer();
   $http({
     method: 'GET',
-    url: "http://localhost:3000/api/users/" + id
+    url: "/api/users/" + id
   }).then(function(response){
     deferred.resolve(response.data);
   })
@@ -232,7 +232,7 @@ this.destroyUser = function(id){
   var deferred = $q.defer();
   $http({
     method: 'DELETE',
-    url: "http://localhost:3000/api/users/" + id
+    url: "/api/users/" + id
   }).then(function(response){
     deferred.resolve(response);
   })
@@ -243,7 +243,7 @@ this.createUser = function(body){
   var deferred = $q.defer();
   $http({
     method: 'POST',
-    url: "http://localhost:3000/api/users",
+    url: "/api/users",
     data: body
   }).then(function(response){
     deferred.resolve(response.data);
@@ -254,7 +254,7 @@ this.updateUser = function(id, body){
   var deferred = $q.defer();
   $http({
     method: 'PUT',
-    url: "http://localhost:3000/api/users/" + id,
+    url: "/api/users/" + id,
     data: body
   }).then(function(response){
     deferred.resolve(response.data);
