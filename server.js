@@ -8,35 +8,35 @@ var express = require('express'),
     blendedCtrl = require('./controllers/blendedCtrl'),
     mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/products',  function (err, res) {
+mongoose.connect('mongodb://bearabon:Garbble9!@ds023644.mlab.com:23644/opportunity-analysis/products',  function (err, res) {
       if (err) {
         console.log ('ERROR connecting to products. '  + err);
       } else {
         console.log ('Successfully connected to products.');
       }
     });
-mongoose.createConnection('mongodb://localhost/users',  function (err, res) {
+mongoose.createConnection('mongodb://bearabon:Garbble9!@ds023644.mlab.com:23644/opportunity-analysis/users',  function (err, res) {
       if (err) {
         console.log ('ERROR connecting to users.'  + err);
       } else {
         console.log ('Successfully connected to users.');
       }
     });
-mongoose.createConnection('mongodb://localhost/mostLikely',  function (err, res) {
+mongoose.createConnection('mongodb://bearabon:Garbble9!@ds023644.mlab.com:23644/opportunity-analysis/mostLikely',  function (err, res) {
       if (err) {
         console.log ('ERROR connecting to MostLikely.'  + err);
       } else {
         console.log ('Successfully connected to MostLikely.');
       }
     });
-mongoose.createConnection('mongodb://localhost/worst',  function (err, res) {
+mongoose.createConnection('mongodb://bearabon:Garbble9!@ds023644.mlab.com:23644/opportunity-analysis/worst',  function (err, res) {
       if (err) {
         console.log ('ERROR connecting to Worst.'  + err);
       } else {
         console.log ('Successfully connected to Worst.');
       }
     });
-mongoose.createConnection('mongodb://localhost/blended',  function (err, res) {
+mongoose.createConnection('mongodb://bearabon:Garbble9!@ds023644.mlab.com:23644/opportunity-analysis/blended',  function (err, res) {
       if (err) {
         console.log ('ERROR connecting to Blended.'  + err);
       } else {
