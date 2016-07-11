@@ -8,41 +8,43 @@ var express = require('express'),
     blendedCtrl = require('./controllers/blendedCtrl'),
     mongoose = require('mongoose');
 
-mongoose.connect('mongodb://bearabon:Garbble9!@ds023644.mlab.com:23644/opportunity-analysis/products',  function (err, res) {
+var MONGO_URI = "mongodb://bearabon:Johnstone3@ds023644.mlab.com:23644/opportunity-analysis"
+
+mongoose.connect(MONGO_URI,  function (err, res) {
       if (err) {
         console.log ('ERROR connecting to products. '  + err);
       } else {
         console.log ('Successfully connected to products.');
       }
     });
-mongoose.createConnection('mongodb://bearabon:Garbble9!@ds023644.mlab.com:23644/opportunity-analysis/users',  function (err, res) {
-      if (err) {
-        console.log ('ERROR connecting to users.'  + err);
-      } else {
-        console.log ('Successfully connected to users.');
-      }
-    });
-mongoose.createConnection('mongodb://bearabon:Garbble9!@ds023644.mlab.com:23644/opportunity-analysis/mostLikely',  function (err, res) {
-      if (err) {
-        console.log ('ERROR connecting to MostLikely.'  + err);
-      } else {
-        console.log ('Successfully connected to MostLikely.');
-      }
-    });
-mongoose.createConnection('mongodb://bearabon:Garbble9!@ds023644.mlab.com:23644/opportunity-analysis/worst',  function (err, res) {
-      if (err) {
-        console.log ('ERROR connecting to Worst.'  + err);
-      } else {
-        console.log ('Successfully connected to Worst.');
-      }
-    });
-mongoose.createConnection('mongodb://bearabon:Garbble9!@ds023644.mlab.com:23644/opportunity-analysis/blended',  function (err, res) {
-      if (err) {
-        console.log ('ERROR connecting to Blended.'  + err);
-      } else {
-        console.log ('Successfully connected to Blended.');
-      }
-    });
+// mongoose.createConnection(MONGO_URI,  function (err, res) {
+//       if (err) {
+//         console.log ('ERROR connecting to users.'  + err);
+//       } else {
+//         console.log ('Successfully connected to users.');
+//       }
+//     });
+// mongoose.createConnection(MONGO_URI,  function (err, res) {
+//       if (err) {
+//         console.log ('ERROR connecting to MostLikely.'  + err);
+//       } else {
+//         console.log ('Successfully connected to MostLikely.');
+//       }
+//     });
+// mongoose.createConnection(MONGO_URI,  function (err, res) {
+//       if (err) {
+//         console.log ('ERROR connecting to Worst.'  + err);
+//       } else {
+//         console.log ('Successfully connected to Worst.');
+//       }
+//     });
+// mongoose.createConnection(MONGO_URI,  function (err, res) {
+//       if (err) {
+//         console.log ('ERROR connecting to Blended.'  + err);
+//       } else {
+//         console.log ('Successfully connected to Blended.');
+//       }
+//     });
 
 
 
@@ -93,7 +95,6 @@ app.get('/api/users/:id', userCtrl.findIndividual)
 app.put('/api/users/:id', userCtrl.updateUser)
 app.delete('/api/users/:id', userCtrl.removeUser)
 
-var MONGO_URI = process.env.MONGO_URI;
 var port = process.env.PORT || 3000;
 app.listen(port, function(){
   console.log("Listening on port", port)
