@@ -10,6 +10,7 @@ var express = require('express'),
 
 var MONGO_URI = process.env.MONGO_URI;
 
+
 mongoose.connect(MONGO_URI,  function (err, res) {
       if (err) {
         console.log ('ERROR connecting to products. '  + err);
@@ -17,34 +18,6 @@ mongoose.connect(MONGO_URI,  function (err, res) {
         console.log ('Successfully connected to products.');
       }
     });
-// mongoose.createConnection(MONGO_URI,  function (err, res) {
-//       if (err) {
-//         console.log ('ERROR connecting to users.'  + err);
-//       } else {
-//         console.log ('Successfully connected to users.');
-//       }
-//     });
-// mongoose.createConnection(MONGO_URI,  function (err, res) {
-//       if (err) {
-//         console.log ('ERROR connecting to MostLikely.'  + err);
-//       } else {
-//         console.log ('Successfully connected to MostLikely.');
-//       }
-//     });
-// mongoose.createConnection(MONGO_URI,  function (err, res) {
-//       if (err) {
-//         console.log ('ERROR connecting to Worst.'  + err);
-//       } else {
-//         console.log ('Successfully connected to Worst.');
-//       }
-//     });
-// mongoose.createConnection(MONGO_URI,  function (err, res) {
-//       if (err) {
-//         console.log ('ERROR connecting to Blended.'  + err);
-//       } else {
-//         console.log ('Successfully connected to Blended.');
-//       }
-//     });
 
 
 
