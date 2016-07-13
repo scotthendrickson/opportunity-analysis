@@ -1042,11 +1042,6 @@ $scope.blendedFunc = function(){
   $scope.productIdent();
 
 //These are your functions for getting info from the Users Collection
-$scope.blankUser = {
-  login: "",
-  password:"",
-  confirmedPassword: "",
-}
 $scope.user = {
   firstName: "",
   lastName: "",
@@ -1056,11 +1051,21 @@ $scope.user = {
   confirmedPassword: "",
   createDate: "",
 };
+
+$scope.temp = {
+  login: "",
+  password: "",
+  confirmedPassword: "",
+}
+
 $scope.userData = [];
 $scope.confirmedPasswordResult = "Does not match";
 $scope.confirmPassword = function(){
-  if($scope.user.confirmedPassword === $scope.user.password){
+  if($scope.temp.confirmedPassword === $scope.temp.password){
     $scope.confirmedPasswordResult = "Passwords Match"
+  }
+  if($scope.user.confirmedPassword.length < 8){
+    $scope.confirmedPasswordResult = "Passwords must be at least 8 characters long"
   }
 }
 
@@ -1070,7 +1075,7 @@ $scope.findUser = function(id){
     var index = 0;
     $scope.userData = data;
     for(var i = 0; i < $scope.userData.length; i++){
-      if($scope.user.password === $scope.userData[i].password){
+      if($scope.temp.password === $scope.userData[i].password){
         check = true;
         index = i;
       } else {
@@ -1080,6 +1085,11 @@ $scope.findUser = function(id){
     };
     if(check){
       $scope.user = $scope.userData[index];
+      $scope.temp = {
+        login: "",
+        password: "",
+        confirmedPassword: "",
+      }
       $scope.getData($scope.user._id);
       $location.path('/startProject')
     }else{
@@ -1090,6 +1100,13 @@ $scope.findUser = function(id){
 };
 
 $scope.destroyUser = function(id){
+  if(!$scope.user._id){
+    $location.path("/login")
+    return alert("You must login first", message)
+  };
+  if($scope.temp.confirmedPassword !== $scope.temp.password || $scope.temp.password !== $scope.user.password){
+    return alert("Incorrect password")
+  };
   var check = confirm("Are you certain you want to delete this User?")
   if(check){
     for(var i = 0; i < $scope.allProducts.length; i++){
@@ -1113,30 +1130,51 @@ $scope.destroyUser = function(id){
 };
 
 $scope.createUser = function(body){
-  if($scope.user.password !== $scope.user.confirmedPassword){
+  if($scope.temp.password !== $scope.temp.confirmedPassword){
     return alert("Passwords don't match")
+  }else if ($scope.temp.password.length < 8){
+    return alert("Password must be at least 8 characters long.")
   }else {
+    $scope.user.password = $scope.temp.password;
+    $scope.user.confirmedPassword = $scope.temp.confirmedPassword;
     $scope.user.createDate = new Date();
     mainService.createUser(body).then(function(data){
       $scope.findUser(body.login);
+
     alert("Congratulations on Creating your account!")
     });
-
+    $scope.temp = {
+      login: "",
+      password: "",
+      confirmedPassword: "",
+    };
   }
 
 };
 
 $scope.updateUser = function(id, body){
-  if($scope.user.password !== $scope.user.confirmedPassword){
+  if($scope.temp.password !== $scope.temp.confirmedPassword){
     alert("Passwords don't match")
-  }else if($scope.user.password === $scope.user.confirmedPassword){
+  }else if($scope.temp.password === $scope.temp.confirmedPassword){
+    $scope.user.password = $scope.temp.password;
+    $scope.user.confirmedPassword = $scope.temp.confirmedPassword;
     mainService.updateUser(id, body).then(function(data){});
+    $scope.temp = {
+      login: "",
+      password: "",
+      confirmedPassword: "",
+    };
     alert("Your profile has been updated successfully");
   }
 };
 
 $scope.logOut = function(){
   $scope.user = {};
+  $scope.temp = {
+    login: "",
+    password: "",
+    confirmedPassword: "",
+  }
   $scope.allProducts = {};
   $scope.allProductsMostLikely = {};
   $scope.allProductsWorst = {};

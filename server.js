@@ -1,6 +1,5 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
-    // cors = require('cors'),
     serverCtrl = require('./controllers/serverCtrl'),
     userCtrl = require('./controllers/userCtrl'),
     mostLikelyCtrl = require('./controllers/mostLikelyCtrl'),
@@ -22,19 +21,13 @@ mongoose.connect(MONGO_URI,  function (err, res) {
 
 
 var app = express();
-//var db = mongojs('ecommerce', ['products']);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  // we're connected!
 });
-// var corsOptions = {
-//   origin: 'http://localhost:3000'
-// };
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
-// app.use(cors(corsOptions));
 app.use(express.static(__dirname + '/public'));
 
 //Product Best DB
