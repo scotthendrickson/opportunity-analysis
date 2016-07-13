@@ -30,6 +30,11 @@ var schema = new Schema({
     type: String,
     required: true,
     index: true,
+  },
+  createDate: {
+    type: String,
+    required: false,
+    index: false,
   }
 });
 var User = mongoose.model('users', schema);

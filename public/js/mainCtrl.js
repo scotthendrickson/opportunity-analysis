@@ -1054,6 +1054,7 @@ $scope.user = {
   login: "",
   password:"",
   confirmedPassword: "",
+  createDate: "",
 };
 $scope.userData = [];
 $scope.confirmedPasswordResult = "Does not match";
@@ -1115,6 +1116,7 @@ $scope.createUser = function(body){
   if($scope.user.password !== $scope.user.confirmedPassword){
     return alert("Passwords don't match")
   }else {
+    $scope.user.createDate = new Date();
     mainService.createUser(body).then(function(data){
       $scope.findUser(body.login);
     alert("Congratulations on Creating your account!")
