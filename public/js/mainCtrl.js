@@ -1104,7 +1104,7 @@ $scope.destroyUser = function(id){
     $location.path("/login")
     return alert("You must login first", message)
   };
-  if($scope.temp.confirmedPassword !== $scope.temp.password || $scope.temp.password !== $scope.user.password){
+  if($scope.temp.password !== $scope.user.password){
     return alert("Incorrect password")
   };
   var check = confirm("Are you certain you want to delete this User?")
@@ -1153,8 +1153,14 @@ $scope.createUser = function(body){
 };
 
 $scope.updateUser = function(id, body){
-  if($scope.temp.password !== $scope.temp.confirmedPassword){
-    alert("Passwords don't match")
+  if(!$scope.user._id){
+    $location.path("/login")
+    return alert("You must login first", message)
+  };
+  if($scope.temp.password !== $scope.user.password){
+    $scope.temp.password = "";
+    $scope.temp.confirmedPassword = "";
+    return alert("Incorrect password")
   }else if($scope.temp.password === $scope.temp.confirmedPassword){
     $scope.user.password = $scope.temp.password;
     $scope.user.confirmedPassword = $scope.temp.confirmedPassword;
@@ -1167,6 +1173,12 @@ $scope.updateUser = function(id, body){
     alert("Your profile has been updated successfully");
   }
 };
+
+$scope.changePassword = false;
+$scope.blankPassword = function(){
+  $scope.temp.password = "";
+  $scope.temp.confirmedPassword = "";
+}
 
 $scope.logOut = function(){
   $scope.user = {};

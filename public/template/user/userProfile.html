@@ -30,16 +30,22 @@
       <input type="text" ng-model="user.email" value="">
     </div>
     <div class="input-text-box">
-      Password:
+      Current Password:
     </div>
     <div class="input-box">
       <input type="password" ng-model="temp.password" value="">
     </div>
-    <div class="input-text-box">
-      Confirm Password:
+    <div class="input-text-box fx-bounce-up fx-speed-500" ng-show="changePassword">
+      New Password:
     </div>
-    <div class="input-box">
-      <input type="password" ng-model="temp.confirmedPassword" value="" ng-change="confirmPassword()">
+    <div class="input-box fx-bounce-up fx-speed-500" ng-show="changePassword">
+      <input type="password" ng-model="temp.password" value="">
+    </div>
+    <div class="input-text-box fx-bounce-up fx-speed-500" ng-show="changePassword">
+      Confirm New Password:
+    </div>
+    <div class="input-box fx-bounce-up fx-speed-500 fx-speed-500" ng-show="changePassword">
+      <input type="password" ng-model="temp.password" value="">
     </div>
   </div>
 </div>
@@ -47,6 +53,10 @@
 <div class="button-container">
   <div class="save-button" ng-click="updateUser(user._id, user)">
       Save your changes
+  </div>
+
+  <div class="changePassword-button" ng-click="blankPassword();changePassword = !changePassword">
+      Change Password
   </div>
 
   <div class="next-button" ng-click="destroyUser(user._id)">

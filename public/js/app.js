@@ -1,4 +1,4 @@
-angular.module('routerApp', ['ngAnimate','ui.router']).config(function($stateProvider, $urlRouterProvider) {
+angular.module('routerApp', ['ngAnimate','ui.router', 'ng-fx']).config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
   $stateProvider
   .state('home',{

@@ -1,16 +1,17 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
+    cors = require('cors'),
     serverCtrl = require('./controllers/serverCtrl'),
     userCtrl = require('./controllers/userCtrl'),
     mostLikelyCtrl = require('./controllers/mostLikelyCtrl'),
     worstCtrl = require('./controllers/worstCtrl'),
     blendedCtrl = require('./controllers/blendedCtrl'),
+    config = require('./config.js'),
     mongoose = require('mongoose');
 
-var MONGO_URI = process.env.MONGO_URI;
 
 
-mongoose.connect(MONGO_URI,  function (err, res) {
+mongoose.connect(config.MONGO_URI,  function (err, res) {
       if (err) {
         console.log ('ERROR connecting to products. '  + err);
       } else {
@@ -18,16 +19,18 @@ mongoose.connect(MONGO_URI,  function (err, res) {
       }
     });
 
-
-
 var app = express();
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
 });
+var corsOptions = {
+  origin: 'http://localhost:3000'
+};
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
+app.use(cors(corsOptions));
 app.use(express.static(__dirname + '/public'));
 
 //Product Best DB

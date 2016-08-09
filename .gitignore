@@ -1,5 +1,5 @@
-.DS_Store
 node_modules
 backUpServeCtrl
 BackupServer.js
 Buglist.md
+config.js
